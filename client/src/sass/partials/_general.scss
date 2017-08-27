@@ -2,8 +2,32 @@
     General
  */
 
+body {
+    color: #333;
+    font-family: 'Open Sans', sans-serif;
+}
+
 img {
     max-width: 100%;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+// --- Tabs
+.nav-tabs {
+    li {
+        a {
+            cursor: pointer;
+            font-size: 18px;
+        }
+    }
+}
+
+.tab-content {
+    padding: 15px 0;
 }
 
 // --- Sign In
@@ -13,5 +37,31 @@ img {
 
     img {
         margin: 100px 0 30px;
+    }
+}
+
+// --- Albums
+.albums {
+
+    .welcome {
+        font-size: 12px;
+        margin: 0 0 15px;
+    }
+
+    .item {
+        margin-bottom: 10px;
+
+        .thumbnail-image {
+            padding: 0 5px 0 15px;
+        }
+
+        .meta {
+            padding: 5px 15px 5px 5px;
+
+            h3 {
+                color: $blue;
+                margin-top: 0;
+            }
+        }
     }
 }

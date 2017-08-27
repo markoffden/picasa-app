@@ -10,6 +10,7 @@ import {AuthService} from "./shared/services/auth.service";
 import {ApiService} from "./shared/services/api.service";
 import { AlbumsComponent } from './components/albums/albums.component';
 import {SignedInGuard} from "./shared/guards/signed-in.guard";
+import {PicasaService} from "./shared/services/picasa.service";
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import {SignedInGuard} from "./shared/guards/signed-in.guard";
     providers: [
         ApiService,
         AuthService,
+        PicasaService,
         SignedInGuard
     ],
     bootstrap: [AppComponent]

@@ -16,7 +16,8 @@ express.response.jsonSuccess = function (data) {
     this.json({data})
 };
 express.response.errorResponse = function (status, e) {
-    this.status(status).send({message: e});
+    this.status(status ? status : 500);
+    this.send({ message: e ? e : 'Server Error' });
 };
 
 // routes

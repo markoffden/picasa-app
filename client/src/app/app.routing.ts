@@ -5,7 +5,7 @@ import {AlbumsComponent} from "./components/albums/albums.component";
 import {SignedInGuard} from "./shared/guards/signed-in.guard";
 
 const appRoutes: Routes = [
-    { path: 'sign-in', component: SignInComponent},
+    { path: '', component: SignInComponent},
     { path: 'albums', component: AlbumsComponent, canActivate: [SignedInGuard] }
 ];
 

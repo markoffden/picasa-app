@@ -1,3 +1,57 @@
-<p>
-  albums works!
-</p>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+            <span class="fa fa-picture-o"></span>
+        </a>
+    </li>
+    <li role="presentation">
+        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+            <span class="fa fa-user"></span>
+        </a>
+    </li>
+    <li role="presentation">
+        <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+            <span class="fa fa-comments"></span>
+        </a>
+    </li>
+    <li role="presentation">
+        <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+            <span class="fa fa-cog"></span>
+        </a>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+        <div class="container albums">
+            <p class="welcome">
+                Welcome, {{userName}}!
+            </p>
+            <div class="row item" *ngFor="let album of albums">
+                <div class="col-xs-3 thumbnail-image">
+                    <img src="{{album.media$group.media$thumbnail[0].url}}" alt="Album Thumbnail: {{album.title.$t}}">
+                </div>
+                <div class="col-xs-9 meta">
+                    <h3>{{album.title.$t}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+        <div class="container">
+            Some Tab Content
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+        <div class="container">
+            Another Tab Content
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="settings">
+        <div class="container">
+            And Another
+        </div>
+    </div>
+</div>

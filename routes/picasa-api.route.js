@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const env = require('env2')('./.env');
 
 const picasa = require('../services/picasa-api.service');
 
@@ -15,6 +16,21 @@ router.post('/retrieve-access-token', (req, res, next) => {
         '&code=' + authCode;
 
     picasa._post(getTokenUrl).then(
+        data => {
+            res.jsonSuccess(data);
+        },
+        error => {
+            res.errorResponse(error.status, error.message);
+        }
+    );
+});
+
+router.get('/albums', (req, res) => {
+
+    let auth = req.headers.authorization;
+
+    picasa._get(process.env.API_URL + '/feed/api/user/default?alt=json', auth).then(
+
         data => {
             res.jsonSuccess(data);
         },
