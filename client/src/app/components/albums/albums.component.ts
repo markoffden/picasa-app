@@ -7,7 +7,7 @@ import {PicasaService} from "../../shared/services/picasa.service";
 })
 export class AlbumsComponent implements OnInit {
 
-    albums: any[] = null;
+    albums: any[] = [];
 
     userName: string = null;
 

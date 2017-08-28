@@ -20,7 +20,6 @@ h3 {
 .nav-tabs {
     li {
         a {
-            cursor: pointer;
             font-size: 18px;
         }
     }
@@ -28,6 +27,19 @@ h3 {
 
 .tab-content {
     padding: 15px 0;
+}
+
+.welcome {
+    font-size: 12px;
+    margin: 0 0 15px;
+
+    a {
+        margin-right: 10px;
+
+        .fa {
+            font-size: 14px;
+        }
+    }
 }
 
 // --- Sign In
@@ -41,26 +53,92 @@ h3 {
 }
 
 // --- Albums
+
 .albums {
 
-    .welcome {
-        font-size: 12px;
-        margin: 0 0 15px;
+    ul {
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin: 0;
+
+            &:first-child {
+                .item {
+                    border-top: 1px solid $gray-lighter;
+                }
+            }
+        }
     }
 
     .item {
-        margin-bottom: 10px;
+        border-bottom: 1px solid $gray-lighter;
+        background-color: $gray-bg;
+        padding: 15px 0;
+        position: relative;
 
         .thumbnail-image {
             padding: 0 5px 0 15px;
         }
 
         .meta {
-            padding: 5px 15px 5px 5px;
+            padding: 5px 50px 5px 5px;
 
             h3 {
                 color: $blue;
-                margin-top: 0;
+                margin: 0 0 5px;
+            }
+
+            p {
+                color: $gray;
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+
+        .album-more {
+            cursor: pointer;
+            font-size: 0;
+            display: block;
+            width: 50px;
+            height: 50px;
+            padding-top: 13px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+
+            .fa {
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+// --- Single Album
+
+.single-album {
+
+    .row {
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin-bottom: 5px;
+            padding: 0 3px;
+
+            .image-container {
+                display: block;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 100%;
+                padding-top: 100%;
             }
         }
     }

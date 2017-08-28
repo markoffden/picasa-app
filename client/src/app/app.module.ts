@@ -11,12 +11,16 @@ import {ApiService} from "./shared/services/api.service";
 import { AlbumsComponent } from './components/albums/albums.component';
 import {SignedInGuard} from "./shared/guards/signed-in.guard";
 import {PicasaService} from "./shared/services/picasa.service";
+import { SingleAlbumComponent } from './components/single-album/single-album.component';
+import { AlbumListItemComponent } from './components/albums/album-list-item/album-list-item.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         SignInComponent,
-        AlbumsComponent
+        AlbumsComponent,
+        SingleAlbumComponent,
+        AlbumListItemComponent
     ],
     imports: [
         BrowserModule,

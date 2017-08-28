@@ -4,7 +4,7 @@ const env = require('env2')('./.env');
 
 const picasa = require('../services/picasa-api.service');
 
-router.post('/retrieve-access-token', (req, res, next) => {
+router.post('/retrieve-access-token', (req, res) => {
 
     let authCode = req.body.data;
 
@@ -29,7 +29,23 @@ router.get('/albums', (req, res) => {
 
     let auth = req.headers.authorization;
 
-    picasa._get(process.env.API_URL + '/feed/api/user/default?alt=json', auth).then(
+    picasa._get(`${process.env.API_URL}/feed/api/user/default?alt=json`, auth).then(
+
+        data => {
+            res.jsonSuccess(data);
+        },
+        error => {
+            res.errorResponse(error.status, error.message);
+        }
+    );
+});
+
+router.get('/albums/:albumId/:resNum/:currIndex', (req, res) => {
+
+    let auth = req.headers.authorization;
+    let {albumId, resNum, currIndex} = req.params;
+
+    picasa._get(`${process.env.API_URL}/feed/api/user/default/albumid/${albumId}?alt=json&max-results=${resNum}&start-index=${currIndex}`, auth).then(
 
         data => {
             res.jsonSuccess(data);

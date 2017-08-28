@@ -25,14 +25,18 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
-        <div class="container albums">
+        <div class="container single-album">
             <p class="welcome">
-                Welcome, {{userName}}!
+                <a routerLink="/albums"><span class="fa fa-chevron-left"></span></a>
+                <span class="fa fa-folder"></span> {{albumTitle}}
             </p>
-            <ul *ngIf="albums.length; else: noAlbums">
-                <li album-list-item *ngFor="let album of albums" [album]="album"></li>
+            <ul *ngIf="photos.length" class="row">
+                <li *ngFor="let photo of photos" class="col-xs-3">
+                    <a href="#" [ngStyle]="{'background-image': 'url(' + photo.media$group.media$thumbnail[1].url + ')'}" class="image-container"></a>
+                </li>
             </ul>
-            <ng-template #noAlbums>No albums to show so far...</ng-template>
+            <div id="scroll-tracker"></div>
+            <p *ngIf="noMorePhotosToShow">There is no more photos to show...</p>
         </div><!-- /.albums -->
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">

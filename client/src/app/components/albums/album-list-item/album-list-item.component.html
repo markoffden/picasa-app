@@ -1,0 +1,14 @@
+<div class="row item">
+    <div class="col-xs-3 thumbnail-image">
+        <img src="{{album.media$group.media$thumbnail[0].url}}" alt="Album Thumbnail: {{album.title.$t}}">
+    </div>
+    <div class="col-xs-9 meta">
+        <h3>{{album.title.$t}}</h3>
+        <p><span class="fa fa-picture-o"></span> {{album.gphoto$numphotos.$t}} files</p>
+        <p><span class="fa fa-clock-o"></span> 2 hours ago</p>
+    </div>
+    <a class="album-more" routerLink="{{album.gphoto$id.$t}}">
+        <span class="fa fa-chevron-right"></span>
+        <span class="fa fa-chevron-right"></span>
+    </a>
+</div>

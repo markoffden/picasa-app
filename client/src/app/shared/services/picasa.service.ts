@@ -10,4 +10,8 @@ export class PicasaService {
     getAlbums() {
         return this._api.get('albums');
     }
+
+    getAlbumContent(id: string, resultsNum: number, currIndex: number) {
+        return this._api.get(`albums/${id}/${resultsNum}/${currIndex}`);
+    }
 }
