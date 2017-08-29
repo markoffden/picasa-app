@@ -25,20 +25,28 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
-        <div class="container single-album">
+        <div *ngIf="photo" class="container single-photo">
             <p class="welcome">
-                <a routerLink="/albums"><span class="fa fa-chevron-left"></span></a>
-                <span class="fa fa-folder"></span> {{albumTitle}}
+                <a [routerLink]="['/albums', albumId]"><span class="fa fa-chevron-left"></span></a>
+                <span class="fa fa-folder"></span> {{photo.title.$t}}
             </p>
-            <ul *ngIf="photos.length" class="row">
-                <li photo-list-item *ngFor="let photo of photos" class="col-xs-3" [photo]="photo"></li>
-            </ul>
-            <div id="scroll-tracker"></div>
-            <div *ngIf="loadingMore" class="loading-more">
-                <img src="assets/images/loading-more.svg" alt="Loading...">
+            <div class="item-wrapper">
+                <img src="{{photo.content.src}}" alt="Photo: {{photo.title.$t}}">
+                <div class="row">
+                    <div class="col-xs-3 title">File name:</div>
+                    <div class="col-xs-9 content">{{photo.title.$t}}</div>
+                    <div class="col-xs-3 title">Published:</div>
+                    <div class="col-xs-9 content">{{photo.published.$t | date}}</div>
+                    <div class="col-xs-3 title">Caption:</div>
+                    <div class="col-xs-9 content">{{photo.summary.$t || 'There is no caption for this photo so far'}}</div>
+                    <div class="col-xs-3 title">Keywords:</div>
+                    <div class="col-xs-9 content tags">
+                        <a href="#" class="btn btn-info btn-xs">Fun</a>
+                        <a href="#" class="btn btn-info btn-xs">Weekend</a>
+                    </div>
+                </div>
             </div>
-            <p *ngIf="noMorePhotosToShow">There is no more photos to show...</p>
-        </div><!-- /.single-album -->
+        </div><!-- /.single-photo -->
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
         <div class="container">

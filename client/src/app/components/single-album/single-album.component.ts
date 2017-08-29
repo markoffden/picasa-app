@@ -24,6 +24,8 @@ export class SingleAlbumComponent implements OnInit, OnDestroy {
 
     allowScrollTrack: boolean = true;
 
+    loadingMore: boolean = false;
+
     constructor(private _ar: ActivatedRoute, private _ps: PicasaService) {
         this.isAlive = true;
     }
@@ -32,7 +34,7 @@ export class SingleAlbumComponent implements OnInit, OnDestroy {
 
         this._ar.params.takeWhile(() => this.isAlive).subscribe(
             params => {
-                this.albumId = params['id'];
+                this.albumId = params['albumId'];
                 this.getPhotos();
             }
         );
@@ -40,26 +42,31 @@ export class SingleAlbumComponent implements OnInit, OnDestroy {
 
     getPhotos() {
 
-        this.allowScrollTrack = false;
-        this._ps.getAlbumContent(this.albumId, this.resultsPerQuery, this.currentResultsIndex).subscribe(
-            res => {
-                if (!this.albumTitle) { this.albumTitle = res.data.feed.title.$t }
-                if (res.data.feed.entry && res.data.feed.entry.length) {
-                    this.photos = this.photos.concat(res.data.feed.entry);
-                    this.currentResultsIndex = this.currentResultsIndex + res.data.feed.entry.length;
-                } else {
-                    this.noMorePhotosToShow = true;
+        if (!this.noMorePhotosToShow) {
+
+            this.allowScrollTrack = false;
+            this.loadingMore = true;
+
+            this._ps.getAlbumContent(this.albumId, this.resultsPerQuery, this.currentResultsIndex).subscribe(
+                res => {
+                    console.log(res);
+                    if (!this.albumTitle) { this.albumTitle = res.data.feed.title.$t }
+                    if (res.data.feed.entry && res.data.feed.entry.length) {
+                        this.photos = this.photos.concat(res.data.feed.entry);
+                        this.currentResultsIndex = this.currentResultsIndex + res.data.feed.entry.length;
+                    } else {
+                        this.noMorePhotosToShow = true;
+                    }
+                },
+                error => {
+                    console.log(error);
+                },
+                () => {
+                    this.allowScrollTrack = true;
+                    this.loadingMore = false;
                 }
-                console.log(res.data);
-                console.log(this.currentResultsIndex);
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-                this.allowScrollTrack = true;
-            }
-        );
+            );
+        }
     }
 
     @HostListener('window: scroll') checkIfTrackerInViewport() {

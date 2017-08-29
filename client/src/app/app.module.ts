@@ -13,6 +13,9 @@ import {SignedInGuard} from "./shared/guards/signed-in.guard";
 import {PicasaService} from "./shared/services/picasa.service";
 import { SingleAlbumComponent } from './components/single-album/single-album.component';
 import { AlbumListItemComponent } from './components/albums/album-list-item/album-list-item.component';
+import {TooltipModule} from "ngx-tooltip";
+import { SinglePhotoComponent } from './components/single-photo/single-photo.component';
+import { PhotoListItemComponent } from './components/single-album/photo-list-item/photo-list-item.component';
 
 @NgModule({
     declarations: [
@@ -20,13 +23,16 @@ import { AlbumListItemComponent } from './components/albums/album-list-item/albu
         SignInComponent,
         AlbumsComponent,
         SingleAlbumComponent,
-        AlbumListItemComponent
+        AlbumListItemComponent,
+        SinglePhotoComponent,
+        PhotoListItemComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
+        TooltipModule
     ],
     providers: [
         ApiService,

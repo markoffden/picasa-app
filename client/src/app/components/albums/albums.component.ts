@@ -11,10 +11,14 @@ export class AlbumsComponent implements OnInit {
 
     userName: string = null;
 
+    loadingMore: boolean = false;
+
     constructor(private _ps: PicasaService) {
     }
 
     ngOnInit() {
+
+        this.loadingMore = true;
 
         this._ps.getAlbums().subscribe(
 
@@ -29,6 +33,9 @@ export class AlbumsComponent implements OnInit {
             },
             error => {
                 console.log(error);
+            },
+            () => {
+                this.loadingMore = false;
             }
         );
     }

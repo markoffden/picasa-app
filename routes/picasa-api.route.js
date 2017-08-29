@@ -56,4 +56,20 @@ router.get('/albums/:albumId/:resNum/:currIndex', (req, res) => {
     );
 });
 
+router.get('/photo/:albumId/:photoId', (req, res) => {
+
+    let auth = req.headers.authorization;
+    let {albumId, photoId} = req.params;
+
+    picasa._get(`${process.env.API_URL}/entry/api/user/default/albumid/${albumId}/photoid/${photoId}?alt=json`, auth).then(
+
+        data => {
+            res.jsonSuccess(data);
+        },
+        error => {
+            res.errorResponse(error.status, error.message);
+        }
+    );
+});
+
 module.exports = router;

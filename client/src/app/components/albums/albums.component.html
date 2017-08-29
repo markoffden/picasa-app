@@ -32,7 +32,10 @@
             <ul *ngIf="albums.length; else: noAlbums">
                 <li album-list-item *ngFor="let album of albums" [album]="album"></li>
             </ul>
-            <ng-template #noAlbums>No albums to show so far...</ng-template>
+            <div *ngIf="loadingMore" class="loading-more">
+                <img src="assets/images/loading-more.svg" alt="Loading...">
+            </div>
+            <ng-template *ngIf="!loadingMore" #noAlbums>No albums to show so far...</ng-template>
         </div><!-- /.albums -->
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">

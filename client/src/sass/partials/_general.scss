@@ -17,6 +17,7 @@ h3 {
 }
 
 // --- Tabs
+
 .nav-tabs {
     li {
         a {
@@ -29,6 +30,8 @@ h3 {
     padding: 15px 0;
 }
 
+// --- Misc
+
 .welcome {
     font-size: 12px;
     margin: 0 0 15px;
@@ -40,6 +43,10 @@ h3 {
             font-size: 14px;
         }
     }
+}
+
+.loading-more {
+    text-align: center;
 }
 
 // --- Sign In
@@ -132,14 +139,83 @@ h3 {
             margin-bottom: 5px;
             padding: 0 3px;
 
-            .image-container {
-                display: block;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                width: 100%;
-                padding-top: 100%;
+            .item-wrapper {
+                border: 1px solid $gray-lighter;
+                background-color: $gray-bg;
+                border-radius: 5px;
+                position: relative;
+
+                .image-container {
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    width: 100%;
+                    padding-top: 100%;
+                }
+
+                a {
+                    font-size: 12px;
+                    padding: 0 5px;
+                }
+
+                .tooltip {
+                    opacity: 1;
+                }
             }
+
+            .tooltip {
+                width: 200px;
+                margin-top: 0;
+
+                .tooltip-row {
+
+                    .title,
+                    .content {
+                        font-size: 10px;
+                    }
+
+                    .title {
+                        text-align: right;
+                        padding: 2px 3px 2px 5px;
+                    }
+
+                    .content {
+                        text-align: left;
+                        padding: 2px 5px 2px 3px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// --- Single Photo
+
+.single-photo {
+
+    .item-wrapper {
+
+        img {
+            display: block;
+            max-width: 75%;
+            margin: 0 auto 15px;
+        }
+
+        .title,
+        .content {
+            font-size: 12px;
+        }
+
+        .title {
+            padding: 3px 5px 3px 15px;
+            text-align: right;
+        }
+
+        .content {
+            padding: 3px 15px 3px 5px;
+            text-align: left;
         }
     }
 }
