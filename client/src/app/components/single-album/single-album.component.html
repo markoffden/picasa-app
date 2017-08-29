@@ -26,9 +26,14 @@
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
         <div class="container single-album">
-            <p class="welcome">
-                <a routerLink="/albums"><span class="fa fa-chevron-left"></span></a>
-                <span class="fa fa-folder"></span> {{albumTitle}}
+            <p class="breadcrumbs needs-border">
+                <span *ngIf="albumTitle; else: stillLoading">
+                    <a routerLink="/albums">
+                        <span class="fa fa-chevron-left"></span>
+                    </a>
+                    <span class="fa fa-folder"></span> {{albumTitle}}
+                </span>
+                <ng-template #stillLoading><span>Loading...</span></ng-template>
             </p>
             <ul *ngIf="photos.length" class="row">
                 <li photo-list-item *ngFor="let photo of photos" class="col-xs-3" [photo]="photo"></li>
@@ -37,7 +42,7 @@
             <div *ngIf="loadingMore" class="loading-more">
                 <img src="assets/images/loading-more.svg" alt="Loading...">
             </div>
-            <p *ngIf="noMorePhotosToShow">There is no more photos to show...</p>
+            <p *ngIf="noMorePhotosToShow">No more photos to show...</p>
         </div><!-- /.single-album -->
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">

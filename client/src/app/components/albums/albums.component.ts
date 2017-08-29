@@ -23,13 +23,15 @@ export class AlbumsComponent implements OnInit {
         this._ps.getAlbums().subscribe(
 
             res => {
-                this.albums = res.data.feed.entry.filter(
-                    item => {
-                        return item.title.$t.indexOf('Hangout') === -1;
-                    }
-                );
                 this.userName = res.data.feed.gphoto$nickname.$t;
-                console.log(res);
+                if (res.data.feed.entry) {
+                    this.albums = res.data.feed.entry.filter(
+                        item => {
+                            return item.title.$t.indexOf('Hangout') === -1;
+                        }
+                    );
+                    console.log(res);
+                }
             },
             error => {
                 console.log(error);

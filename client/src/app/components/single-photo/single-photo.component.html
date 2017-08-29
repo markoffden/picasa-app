@@ -25,12 +25,17 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
-        <div *ngIf="photo" class="container single-photo">
-            <p class="welcome">
-                <a [routerLink]="['/albums', albumId]"><span class="fa fa-chevron-left"></span></a>
-                <span class="fa fa-folder"></span> {{photo.title.$t}}
+        <div class="container single-photo">
+            <p class="breadcrumbs needs-border">
+                <span *ngIf="photo; else: stillLoading">
+                    <a [routerLink]="['/albums', albumId]">
+                        <span class="fa fa-chevron-left"></span>
+                    </a>
+                    <span class="fa fa-folder"></span> {{photo.title.$t}}
+                </span>
+                <ng-template #stillLoading><span>Loading...</span></ng-template>
             </p>
-            <div class="item-wrapper">
+            <div *ngIf="photo; else: loadingMore" class="item-wrapper">
                 <img src="{{photo.content.src}}" alt="Photo: {{photo.title.$t}}">
                 <div class="row">
                     <div class="col-xs-3 title">File name:</div>
@@ -46,6 +51,11 @@
                     </div>
                 </div>
             </div>
+            <ng-template #loadingMore>
+                <div class="loading-more">
+                    <img src="assets/images/loading-more.svg" alt="Loading...">
+                </div>
+            </ng-template>
         </div><!-- /.single-photo -->
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">

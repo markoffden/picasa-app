@@ -56,12 +56,12 @@ router.get('/albums/:albumId/:resNum/:currIndex', (req, res) => {
     );
 });
 
-router.get('/photo/:albumId/:photoId', (req, res) => {
+router.get('/photo/:albumId/:photoId/:photoSize', (req, res) => {
 
     let auth = req.headers.authorization;
-    let {albumId, photoId} = req.params;
+    let {albumId, photoId, photoSize} = req.params;
 
-    picasa._get(`${process.env.API_URL}/entry/api/user/default/albumid/${albumId}/photoid/${photoId}?alt=json`, auth).then(
+    picasa._get(`${process.env.API_URL}/entry/api/user/default/albumid/${albumId}/photoid/${photoId}?alt=json&imgmax=${photoSize}`, auth).then(
 
         data => {
             res.jsonSuccess(data);

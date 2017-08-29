@@ -26,13 +26,36 @@ export class SinglePhotoComponent implements OnInit, OnDestroy {
                 this.albumId = params['albumId'];
                 this.photoId = params['photoId'];
                 this.getSinglePhoto();
+                console.log(this.getNeededPhotoSize());
             }
         );
     }
 
+    getNeededPhotoSize() {
+
+        let clientWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        if (clientWidth <= 400) {
+            return 400;
+        } else if (clientWidth > 400 && clientWidth <= 768) {
+            return 800;
+        } else if (clientWidth > 768 && clientWidth <= 992) {
+            return 1024;
+        } else if (clientWidth > 992 && clientWidth <= 1200) {
+            return 1280;
+        } else if (clientWidth > 1200 && clientWidth <= 1480) {
+            return 1440;
+        } else if (clientWidth > 1480) {
+            return 1600;
+        } else {
+            return null;
+        }
+    }
+
     getSinglePhoto() {
 
-        this._ps.getSinglePhoto(this.albumId, this.photoId).subscribe(
+        let photoSize = this.getNeededPhotoSize() !== null ? this.getNeededPhotoSize() : 1600;
+
+        this._ps.getSinglePhoto(this.albumId, this.photoId, photoSize).subscribe(
             res => {
                 this.photo = res.data.entry;
                 console.log(res);

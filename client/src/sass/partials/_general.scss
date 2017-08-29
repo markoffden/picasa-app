@@ -32,9 +32,14 @@ h3 {
 
 // --- Misc
 
-.welcome {
+.breadcrumbs {
     font-size: 12px;
     margin: 0 0 15px;
+
+    &.needs-border {
+        padding-bottom: 15px;
+        border-bottom: 1px solid $gray-lighter;
+    }
 
     a {
         margin-right: 10px;
@@ -56,6 +61,7 @@ h3 {
 
     img {
         margin: 100px 0 30px;
+        max-width: 80%;
     }
 }
 

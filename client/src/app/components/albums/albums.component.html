@@ -26,8 +26,9 @@
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
         <div class="container albums">
-            <p class="welcome">
-                Welcome, {{userName}}!
+            <p class="breadcrumbs">
+                <span *ngIf="userName; else: stillLoading">Welcome, {{userName}}!</span>
+                <ng-template #stillLoading><span>Loading...</span></ng-template>
             </p>
             <ul *ngIf="albums.length; else: noAlbums">
                 <li album-list-item *ngFor="let album of albums" [album]="album"></li>

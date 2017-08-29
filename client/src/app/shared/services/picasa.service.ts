@@ -15,7 +15,7 @@ export class PicasaService {
         return this._api.get(`albums/${id}/${resultsNum}/${currIndex}`);
     }
 
-    getSinglePhoto(albumId: string, photoId: string) {
-        return this._api.get(`photo/${albumId}/${photoId}`);
+    getSinglePhoto(albumId: string, photoId: string, photoSize: number) {
+        return this._api.get(`photo/${albumId}/${photoId}/${photoSize}`);
     }
 }

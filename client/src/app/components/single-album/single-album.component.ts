@@ -48,6 +48,7 @@ export class SingleAlbumComponent implements OnInit, OnDestroy {
             this.loadingMore = true;
 
             this._ps.getAlbumContent(this.albumId, this.resultsPerQuery, this.currentResultsIndex).subscribe(
+
                 res => {
                     console.log(res);
                     if (!this.albumTitle) { this.albumTitle = res.data.feed.title.$t }
