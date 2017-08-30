@@ -1,6 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {PicasaService} from "../../shared/services/picasa.service";
+import {ErrorService} from "../../shared/services/error.service";
 
 @Component({
     selector: 'single-photo',
@@ -16,7 +17,7 @@ export class SinglePhotoComponent implements OnInit, OnDestroy {
 
     photo: any = null;
 
-    constructor(private _ar: ActivatedRoute, private _ps: PicasaService) {
+    constructor(private _ar: ActivatedRoute, private _ps: PicasaService, private _es: ErrorService) {
         this.isAlive = true;
     }
 
@@ -59,7 +60,7 @@ export class SinglePhotoComponent implements OnInit, OnDestroy {
                 this.photo = res.data.entry;
             },
             error => {
-                console.log(error);
+                this._es.handleErrorRes(error);
             }
         );
     };

@@ -1,6 +1,7 @@
 import {Component, OnInit, OnDestroy, HostListener} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {PicasaService} from "../../shared/services/picasa.service";
+import {ErrorService} from "../../shared/services/error.service";
 
 @Component({
     selector: 'single-album',
@@ -26,7 +27,7 @@ export class SingleAlbumComponent implements OnInit, OnDestroy {
 
     loadingMore: boolean = false;
 
-    constructor(private _ar: ActivatedRoute, private _ps: PicasaService) {
+    constructor(private _ar: ActivatedRoute, private _ps: PicasaService, private _es: ErrorService) {
         this.isAlive = true;
     }
 
@@ -59,7 +60,7 @@ export class SingleAlbumComponent implements OnInit, OnDestroy {
                     }
                 },
                 error => {
-                    console.log(error);
+                    this._es.handleErrorRes(error);
                 },
                 () => {
                     this.allowScrollTrack = true;

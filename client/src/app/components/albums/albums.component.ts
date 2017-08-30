@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PicasaService} from "../../shared/services/picasa.service";
+import {ErrorService} from "../../shared/services/error.service";
 
 @Component({
     selector: 'albums',
@@ -13,7 +14,7 @@ export class AlbumsComponent implements OnInit {
 
     loadingMore: boolean = false;
 
-    constructor(private _ps: PicasaService) {
+    constructor(private _ps: PicasaService, private _es: ErrorService) {
     }
 
     ngOnInit() {
@@ -33,12 +34,11 @@ export class AlbumsComponent implements OnInit {
                 }
             },
             error => {
-                console.log(error);
+                this._es.handleErrorRes(error);
             },
             () => {
                 this.loadingMore = false;
             }
         );
     }
-
 }

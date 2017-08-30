@@ -15,6 +15,7 @@ import { SingleAlbumComponent } from './components/single-album/single-album.com
 import { AlbumListItemComponent } from './components/albums/album-list-item/album-list-item.component';
 import { SinglePhotoComponent } from './components/single-photo/single-photo.component';
 import { PhotoListItemComponent } from './components/single-album/photo-list-item/photo-list-item.component';
+import {ErrorService} from "./shared/services/error.service";
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { PhotoListItemComponent } from './components/single-album/photo-list-ite
         ApiService,
         AuthService,
         PicasaService,
+        ErrorService,
         SignedInGuard
     ],
     bootstrap: [AppComponent]
