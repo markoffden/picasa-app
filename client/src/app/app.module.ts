@@ -16,6 +16,7 @@ import { AlbumListItemComponent } from './components/albums/album-list-item/albu
 import { SinglePhotoComponent } from './components/single-photo/single-photo.component';
 import { PhotoListItemComponent } from './components/single-album/photo-list-item/photo-list-item.component';
 import {ErrorService} from "./shared/services/error.service";
+import { FromNowPipe } from './shared/pipes/from-now.pipe';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import {ErrorService} from "./shared/services/error.service";
         SingleAlbumComponent,
         AlbumListItemComponent,
         SinglePhotoComponent,
-        PhotoListItemComponent
+        PhotoListItemComponent,
+        FromNowPipe
     ],
     imports: [
         BrowserModule,
