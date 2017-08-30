@@ -25,6 +25,6 @@ const picasaApi = require('./routes/picasa-api.route');
 app.use('/api/v1', picasaApi);
 
 // app listen
-app.listen(process.env.port || 3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('App is up...');
 });
