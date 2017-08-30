@@ -16,13 +16,14 @@ router.post('/retrieve-access-token', (req, res) => {
         '&code=' + authCode;
 
     picasa._post(getTokenUrl).then(
+
         data => {
             res.jsonSuccess(data);
         },
         error => {
             res.errorResponse(error.status, error.message);
         }
-    );
+    ).catch( error => { res.errorResponse(error.status, error.message) });
 });
 
 router.get('/albums', (req, res) => {
@@ -37,7 +38,7 @@ router.get('/albums', (req, res) => {
         error => {
             res.errorResponse(error.status, error.message);
         }
-    );
+    ).catch( error => { res.errorResponse(error.status, error.message) });
 });
 
 router.get('/albums/:albumId/:resNum/:currIndex', (req, res) => {
@@ -53,7 +54,7 @@ router.get('/albums/:albumId/:resNum/:currIndex', (req, res) => {
         error => {
             res.errorResponse(error.status, error.message);
         }
-    );
+    ).catch( error => { res.errorResponse(error.status, error.message) });
 });
 
 router.get('/photo/:albumId/:photoId/:photoSize', (req, res) => {
@@ -69,7 +70,7 @@ router.get('/photo/:albumId/:photoId/:photoSize', (req, res) => {
         error => {
             res.errorResponse(error.status, error.message);
         }
-    );
+    ).catch( error => { res.errorResponse(error.status, error.message) });
 });
 
 module.exports = router;

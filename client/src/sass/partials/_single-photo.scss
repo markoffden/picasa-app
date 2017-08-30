@@ -1,0 +1,31 @@
+/*
+    Single Photo
+ */
+
+.single-photo {
+
+    .item-wrapper {
+        position: relative;
+
+        img {
+            display: block;
+            max-width: 75%;
+            margin: 0 auto 15px;
+        }
+
+        .title,
+        .content {
+            font-size: 12px;
+        }
+
+        .title {
+            padding: 3px 5px 3px 15px;
+            text-align: right;
+        }
+
+        .content {
+            padding: 3px 15px 3px 5px;
+            text-align: left;
+        }
+    }
+}

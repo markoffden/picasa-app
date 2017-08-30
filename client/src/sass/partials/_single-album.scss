@@ -1,0 +1,133 @@
+/*
+    Single Album
+ */
+
+.single-album {
+
+    .row {
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin-bottom: 5px;
+            padding: 0 3px;
+
+            .item-wrapper {
+                border: 1px solid $gray-lighter;
+                background-color: $gray-bg;
+                border-radius: 5px;
+                position: relative;
+
+                .image-container {
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    width: 100%;
+                    padding-top: 100%;
+                }
+
+                a {
+                    font-size: 12px;
+                    padding: 0 5px;
+                }
+            }
+        }
+    }
+}
+
+// --- Tooltip
+.photo-tooltip {
+
+    .photo-tooltip-arrow {
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid black;
+        width: 0;
+        height: 0;
+        position: absolute;
+        //bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+        opacity: 0.75;
+    }
+
+    .photo-tooltip-content {
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        position: absolute;
+        //left: 50%;
+        //top: 100%;
+        //margin-top: 8px;
+        //transform: translateX(-50%);
+        padding: 5px 0;
+        width: 250px;
+        z-index: 999;
+        opacity: 0.75;
+
+        .title,
+        .content {
+            font-size: 10px;
+        }
+
+        .title {
+            text-align: right;
+            padding: 2px 3px 2px 5px;
+        }
+
+        .content {
+            text-align: left;
+            padding: 2px 5px 2px 3px;
+        }
+    }
+
+    &.bottom-safe {
+
+        .photo-tooltip-arrow {
+            bottom: -8px;
+        }
+
+        .photo-tooltip-content {
+            top: 100%;
+            margin-top: 8px;
+        }
+    }
+
+    &.bottom-unsafe {
+        .photo-tooltip-arrow {
+            top: -8px;
+            transform: rotate(180deg);
+        }
+
+        .photo-tooltip-content {
+            bottom: 100%;
+            margin-bottom: 8px;
+        }
+    }
+
+    &.edge-safe {
+        .photo-tooltip-content {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &.edge-left {
+        .photo-tooltip-content {
+            left: 0;
+        }
+    }
+
+    &.edge-right {
+        .photo-tooltip-content {
+            right: 0;
+        }
+    }
+}

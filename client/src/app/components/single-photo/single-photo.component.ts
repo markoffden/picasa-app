@@ -26,7 +26,6 @@ export class SinglePhotoComponent implements OnInit, OnDestroy {
                 this.albumId = params['albumId'];
                 this.photoId = params['photoId'];
                 this.getSinglePhoto();
-                console.log(this.getNeededPhotoSize());
             }
         );
     }
@@ -58,7 +57,6 @@ export class SinglePhotoComponent implements OnInit, OnDestroy {
         this._ps.getSinglePhoto(this.albumId, this.photoId, photoSize).subscribe(
             res => {
                 this.photo = res.data.entry;
-                console.log(res);
             },
             error => {
                 console.log(error);

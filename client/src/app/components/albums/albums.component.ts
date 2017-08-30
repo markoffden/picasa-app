@@ -30,7 +30,6 @@ export class AlbumsComponent implements OnInit {
                             return item.title.$t.indexOf('Hangout') === -1;
                         }
                     );
-                    console.log(res);
                 }
             },
             error => {
