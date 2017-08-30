@@ -1,18 +1,22 @@
 {
-  "name": "picasa-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.17.2",
-    "env2": "^2.2.0",
-    "express": "^4.15.4",
-    "request": "^2.81.0"
-  }
+    "name": "picasa-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.17.2",
+        "env2": "^2.2.0",
+        "express": "^4.15.4",
+        "request": "^2.81.0"
+    },
+    "engines": {
+        "node": "^7.10.1"
+    }
 }
