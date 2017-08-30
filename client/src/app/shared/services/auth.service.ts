@@ -77,6 +77,7 @@ export class AuthService {
     logOut() {
         localStorage.removeItem(environment.accessTokenStorageKey);
         localStorage.removeItem(environment.accessTokenExpiresKey);
+        this.isSignedIn.next(false);
         this._router.navigate(['']);
     }
 }
