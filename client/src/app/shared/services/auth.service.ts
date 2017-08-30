@@ -73,4 +73,10 @@ export class AuthService {
     checkIfSignedIn(): void {
         this.isSignedIn.next(this.getAccessToken() !== null && this.isAccessTokenStillValid());
     }
+
+    logOut() {
+        localStorage.removeItem(environment.accessTokenStorageKey);
+        localStorage.removeItem(environment.accessTokenExpiresKey);
+        this._router.navigate(['']);
+    }
 }
